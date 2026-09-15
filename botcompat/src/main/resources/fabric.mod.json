@@ -1,0 +1,20 @@
+{
+	"schemaVersion": 1,
+	"id": "botcompat",
+	"version": "${version}",
+	"name": "BotCompat Server Mod",
+	"description": "Server-side only: allows vanilla-protocol bot accounts (name prefix builder_) to join this modded server by suppressing client-requirement kicks (BetterCombat / TechReborn configuration sync) for those accounts.",
+	"authors": [
+		"botcompat"
+	],
+	"license": "MIT",
+	"environment": "*",
+	"mixins": [
+		"botcompat.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~1.21.1",
+		"java": ">=21"
+	}
+}

@@ -1,0 +1,23 @@
+# 密钥/隐私(永不入库)
+keys.json
+**/keys.json
+numen.json
+
+# 运行时与私域
+world/
+world_old_*/
+logs/
+crash-reports/
+options.txt
+ops.json
+usercache.json
+bots/
+*.log
+*.dat
+*.zip
+
+# 构建产物
+build/
+.gradle/
+node_modules/
+run/
