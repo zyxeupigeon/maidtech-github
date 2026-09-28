@@ -1,6 +1,10 @@
 {
   "criteria": {
-    "joined": { "trigger": "minecraft:tick" }
+    "joined": {
+      "trigger": "minecraft:tick"
+    }
   },
-  "rewards": { "function": "maidtech:starter_kit" }
+  "rewards": {
+    "function": "maidtech:grant_kit"
+  }
 }
