@@ -35,3 +35,7 @@
 ## 2026-09-28 三次热修(friendpack-keybindfix-20260928)
 
 朋友包补上 `keybind_fix-1.0.2.jar`(Keybind Fix,键位冲突修复)——此前只有包作者主客户端有,朋友包漏发导致室友 TaCZ 左右键交互失灵。曾误判发布 TooManyShortcuts 方案(已撤回删除),以包作者实测的 keybind_fix 配置为准;两侧客户端均已移除 too-many-shortcuts 避免双重补丁。
+
+## 2026-09-28 四次:按键方案对齐(friendpack-keybinds-config-20260928)
+
+朋友包 options.txt 的 9 行按键配置已对齐包作者方案(冲突键解绑:xaero 设置/新路标/iris 重载/ad_astra 收音机/freecam/simplytooltips/slashblade/YSM,清 packedup 残留行),并补入 tacz-client/common/pre.toml。Release 附 options.txt+config zip 供已装机的朋友覆盖;真修复本体仍是 keybind_fix-1.0.2.jar。
