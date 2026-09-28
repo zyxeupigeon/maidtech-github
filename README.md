@@ -63,6 +63,21 @@
 5. 关服永远走优雅路径(RCON `stop` 或服务器控制台输入 `stop`),
    启动链会在下次启动时自动清理假死残留进程。
 
+## Mindcraft LLM Bot 部署
+
+ 是基于 [kolbyml/Mindcraft](https://github.com/kolbyml/Mindcraft) 的调优 fork:
+- DeepSeek / 智谱 GLM 双模型 profile 示例(中文人设、指令优先、短回复)
+- reasoning_effort 可调(deepseek.js 支持 params 覆盖,off~high)
+- 密钥分离(keys.json 不入库),patches/ 自动套用 mineflayer 补丁
+- **室友/朋友在自己电脑部署**:见 [docs/mindcraft-deploy.md](docs/mindcraft-deploy.md)
+
+## 存档策略
+
+世界存档**不入库**。备份策略:
+- 服主本地:QuickBackupMulti mod +  手动快照
+- 需要异地备份:用 GitHub **Release** 上传存档压缩包(私有仓库,单文件 ≤2GB),不要提交进 git
+- 多人存档含建筑与玩家数据,**私有仓库**才可上传,公开仓库永远不要
+
 ## 种子分析器
 
 复刻原版 `LegacyRandomSource` / `setLargeFeatureSeedWithSalt` / `random_spread`
