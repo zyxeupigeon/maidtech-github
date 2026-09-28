@@ -31,3 +31,7 @@
 新增 8 个:Deeper and Darker 1.3.3(+owo-lib 0.13.0-alpha.15)、Eternal Starlight 0.9.1、Paradise Lost 2.4.6-beta、Dimensional Doors 6.2.2、The Bumblezone 7.16.0(+resourcefullib 3.0.12、midnightlib 1.9.3)。三处(服务器/主客户端/朋友包)已同步,服务器加载验证通过(8 个全绿)。
 
 **同时服务器已重置全新世界**:旧档备份为 `server/world_old_survival_20260928_1814`,新种子 `-5036040615127431238`(随机),level-seed 已清空、Chunky 预生成(0,0 r3000)进行中,maidtech-starter 礼包数据包已装回。朋友需自行清理本机 Xaero 缓存(见 Release 说明)。
+
+## 2026-09-28 三次热修(friendpack-keybindfix-20260928)
+
+朋友包补上 `keybind_fix-1.0.2.jar`(Keybind Fix,键位冲突修复)——此前只有包作者主客户端有,朋友包漏发导致室友 TaCZ 左右键交互失灵。曾误判发布 TooManyShortcuts 方案(已撤回删除),以包作者实测的 keybind_fix 配置为准;两侧客户端均已移除 too-many-shortcuts 避免双重补丁。
