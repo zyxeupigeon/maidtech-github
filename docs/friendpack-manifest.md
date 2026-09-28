@@ -25,3 +25,9 @@
 - 整包 zip ≈ 405MB,增量 zip 按本次变更单独打。
 - 私有仓库的 Release 只有协作者能下载;新朋友需要先加协作者(或临时转公开)。
 - 朋友连接地址随 DHCP 可能漂移,以交接文档/最新通知为准(2026-09-28 为 `192.168.110.138:25566`)。
+
+## 2026-09-28 二次同步(friendpack-dims-20260928)
+
+新增 8 个:Deeper and Darker 1.3.3(+owo-lib 0.13.0-alpha.15)、Eternal Starlight 0.9.1、Paradise Lost 2.4.6-beta、Dimensional Doors 6.2.2、The Bumblezone 7.16.0(+resourcefullib 3.0.12、midnightlib 1.9.3)。三处(服务器/主客户端/朋友包)已同步,服务器加载验证通过(8 个全绿)。
+
+**同时服务器已重置全新世界**:旧档备份为 `server/world_old_survival_20260928_1814`,新种子 `-5036040615127431238`(随机),level-seed 已清空、Chunky 预生成(0,0 r3000)进行中,maidtech-starter 礼包数据包已装回。朋友需自行清理本机 Xaero 缓存(见 Release 说明)。
