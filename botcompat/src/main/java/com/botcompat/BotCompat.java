@@ -29,7 +29,7 @@ public final class BotCompat {
     private static final Logger LOGGER = LoggerFactory.getLogger("botcompat");
 
     /** Player names that are treated as headless bots (configurable later if ever needed). */
-    private static final String[] BOT_PREFIXES = { "builder_" };
+    private static final String[] BOT_PREFIXES = { "builder_", "mindcraft" };
 
     /** Kick-message fragments that are safe to swallow: "client feature not synced" kicks. */
     private static final String[] SUPPRESS_MARKERS = {
