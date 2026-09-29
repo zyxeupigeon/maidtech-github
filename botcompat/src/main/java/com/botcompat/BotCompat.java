@@ -87,6 +87,13 @@ public final class BotCompat {
     }
 
     public static void logSuppressed(String player, String message) {
+        String key = player + '|' + message.replaceAll("\\d+", "N");
+        long now = System.currentTimeMillis();
+        Long last = LOG_COOLDOWN.get(key);
+        if (last != null && now - last < 5000L) {
+            return;
+        }
+        LOG_COOLDOWN.put(key, now);
         LOGGER.info("[botcompat] Suppressed client-requirement kick for '{}': {}", player, message);
     }
 
@@ -100,7 +107,7 @@ public final class BotCompat {
             new java.util.concurrent.ConcurrentHashMap<>();
 
     public static void logReplaced(String player, String what) {
-        String key = player + '|' + what;
+        String key = player + '|' + what.replaceAll("\\d+", "N");
         long now = System.currentTimeMillis();
         Long last = LOG_COOLDOWN.get(key);
         if (last != null && now - last < 5000L) {
