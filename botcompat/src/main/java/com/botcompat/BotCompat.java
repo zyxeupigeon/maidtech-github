@@ -94,7 +94,19 @@ public final class BotCompat {
         LOGGER.info("[botcompat] Not suppressing kick for '{}' (not a bot account): {}", player, message);
     }
 
+    /** Rate limiter: high-frequency drops (e.g. eternal_starlight attachment sync)
+     *  must not flood the console - log the same key at most once per 5 s. */
+    private static final java.util.concurrent.ConcurrentHashMap<String, Long> LOG_COOLDOWN =
+            new java.util.concurrent.ConcurrentHashMap<>();
+
     public static void logReplaced(String player, String what) {
+        String key = player + '|' + what;
+        long now = System.currentTimeMillis();
+        Long last = LOG_COOLDOWN.get(key);
+        if (last != null && now - last < 5000L) {
+            return;
+        }
+        LOG_COOLDOWN.put(key, now);
         LOGGER.info("[botcompat] Bot '{}': replaced {} (modded item components unparseable by vanilla-protocol clients)", player, what);
     }
 
