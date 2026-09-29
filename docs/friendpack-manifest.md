@@ -39,3 +39,7 @@
 ## 2026-09-28 四次:按键方案对齐(friendpack-keybinds-config-20260928)
 
 朋友包 options.txt 的 9 行按键配置已对齐包作者方案(冲突键解绑:xaero 设置/新路标/iris 重载/ad_astra 收音机/freecam/simplytooltips/slashblade/YSM,清 packedup 残留行),并补入 tacz-client/common/pre.toml。Release 附 options.txt+config zip 供已装机的朋友覆盖;真修复本体仍是 keybind_fix-1.0.2.jar。
+
+## 2026-09-29:Polymorph(合成配方冲突解决器)
+
+polymorph-fabric-1.2.0+1.21.1 三处同步(服务器/主客户端/朋友包),服务器加载验证通过。解决多 mod 同形状配方撞车时的产出随机问题。
