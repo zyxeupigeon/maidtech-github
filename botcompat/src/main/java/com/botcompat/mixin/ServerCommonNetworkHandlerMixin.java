@@ -85,6 +85,24 @@ public abstract class ServerCommonNetworkHandlerMixin {
     }
 
     private void botcompat$handleSend(Packet<?> packet, CallbackInfo ci) {
+        // Global drop: polymorph 1.2.0 breaks custom-payload codec dispatch for
+        // other mods, so carpet:hello throws ClassCastException on encode and
+        // kills joining clients (intermittent race). No client in this ecosystem
+        // speaks carpet, so the handshake is dead weight - drop for everyone.
+        if (packet instanceof ClientboundCustomPayloadPacket pp) {
+            var pid = pp.payload().type().id();
+            String pidStr = pid == null ? null : pid.toString();
+            // carpet:hello - polymorph codec conflict; creaturechat s2c - multibyte
+            // string encoder bug (IndexOutOfBounds on Chinese text). Both crash the
+            // connection on encode, so they are dropped for EVERY connection.
+            if (pidStr != null && (pidStr.equals("carpet:hello")
+                    || pidStr.startsWith("creaturechat:packet_s2c"))) {
+                ci.cancel();
+                BotCompat.logReplaced("connection", pidStr + " -> dropped globally (encoder crash bug)");
+                return;
+            }
+        }
+
         if (botcompat$replacing) {
             return; // re-entrant send() of a replacement packet
         }
