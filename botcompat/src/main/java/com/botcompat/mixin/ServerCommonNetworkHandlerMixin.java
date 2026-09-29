@@ -7,6 +7,7 @@ import net.minecraft.network.Connection;
 import net.minecraft.network.PacketSendListener;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.common.ClientboundCustomPayloadPacket;
 import net.minecraft.network.protocol.common.ClientboundUpdateTagsPacket;
 import net.minecraft.network.protocol.game.ClientboundCommandsPacket;
 import net.minecraft.network.protocol.game.ClientboundContainerSetContentPacket;
@@ -147,6 +148,15 @@ public abstract class ServerCommonNetworkHandlerMixin {
                 self.send(new ClientboundContainerSetContentPacket(win.getContainerId(), win.getStateId(), safe, ItemStack.EMPTY));
             } finally {
                 botcompat$replacing = false;
+            }
+        } else if (packet instanceof ClientboundCustomPayloadPacket payloadPkt) {
+            var ch = payloadPkt.payload().type().id();
+            String chStr = ch == null ? null : ch.toString();
+            if (chStr == null || !chStr.startsWith("minecraft:")) {
+                // Modded channels (carpet:hello, polymorph:*, ...) crash the vanilla
+                // protocol encoder for bot connections; bots do not need them.
+                ci.cancel();
+                BotCompat.logReplaced(name, "custom_payload " + chStr + " -> dropped (modded channel)");
             }
         } else if (packet instanceof ClientboundContainerSetSlotPacket slot) {
             ci.cancel();
