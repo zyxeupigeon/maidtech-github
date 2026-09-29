@@ -56,17 +56,3 @@ if (Get-NetTCPConnection -LocalPort $MindserverPort -State Listen -ErrorAction S
     Write-Host ('[OK] mindcraft launching, pid={0} rc={1}' -f $mc.ProcessId, $mc.ReturnValue)
 }
 
-# --- Ollama shim (AI-Player dependency) ---------------------------------------
-# AI-Player hardwires its intent/RAG calls to a local Ollama on 11434; the shim
-# translates them to the configured OpenAI-compatible API and fakes embeddings.
-# Without it, AI-Player conversations die with an "NLP issue" chat message.
-$ShimPort = 11434
-if (Get-NetTCPConnection -LocalPort $ShimPort -State Listen -ErrorAction SilentlyContinue) {
-    Write-Host '[WARN] Shim port already listening, skipping ollama-shim start.'
-} else {
-    $shim = Invoke-CimMethod -ClassName Win32_Process -MethodName Create -Arguments @{
-        CommandLine      = "$Node `"$Base\_tools\ollama-shim.mjs`""
-        CurrentDirectory = "$Base\_tools"
-    }
-    Write-Host ('[OK] ollama-shim launching, pid={0} rc={1}' -f $shim.ProcessId, $shim.ReturnValue)
-}
