@@ -43,3 +43,11 @@
 ## 2026-09-29:Polymorph(合成配方冲突解决器)
 
 polymorph-fabric-1.2.0+1.21.1 三处同步(服务器/主客户端/朋友包),服务器加载验证通过。解决多 mod 同形状配方撞车时的产出随机问题。
+
+## 2026-09-29 二:AI 阵容调整
+
+- **移除 AI-Player**(效果不佳下架,服务器+朋友包已清;包作者主客户端那只 jar 因游戏运行锁定,下次退出游戏时删)。
+- **新增 CreatureChat 3.0.0**(三处同步,对任意生物 LLM 对话):服务器级配置已完成(url=api.deepseek.com/chat/completions,key/model 服务端注入),朋友无需自行配 key。
+- Smart Villagers AI 评估不装:依赖 Simple Voice Chat 语音基建,功能被 CreatureChat 覆盖。
+- ollama-shim 退役(AI-Player 专属,start-all-detached 已同步)。
+- **botwatch.ps1 上线**:每 2 分钟自检"服务器在线但 mindcraft bot 缺席"→自动重启 mindcraft(10 分钟冷却);`botwatch_off.txt` 可暂停。
