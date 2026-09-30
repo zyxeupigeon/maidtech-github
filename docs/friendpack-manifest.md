@@ -51,3 +51,9 @@ polymorph-fabric-1.2.0+1.21.1 三处同步(服务器/主客户端/朋友包),服
 - Smart Villagers AI 评估不装:依赖 Simple Voice Chat 语音基建,功能被 CreatureChat 覆盖。
 - ollama-shim 退役(AI-Player 专属,start-all-detached 已同步)。
 - **botwatch.ps1 上线**:每 2 分钟自检"服务器在线但 mindcraft bot 缺席"→自动重启 mindcraft(10 分钟冷却);`botwatch_off.txt` 可暂停。
+
+## 2026-09-30:numen 升级 0.1.3 + CrossTalk(cross-talk 让 AI 互相听见)
+
+- **numen 0.1.2→0.1.3**(三处同步;0.1.3 内嵌 numen_api 0.1.3,服务器另补独立 api jar——crosstalk 的运行时类加载需要独立 mod 形态的 api)。
+- **新增 crosstalk-fabric/collab 0.1.0**(用户室友 a1206122381 的项目 https://github.com/a1206122381-cmyk/numen-crosstalk):让 numen 同伴互相说话(拉模型:speech.jsonl/heard.jsonl 管道,不污染主人窗口)。服务器日志确认"已注册工具: say / hear / who_is_here"。
+- **版本依赖链(重要)**:crosstalk 0.1.0 需要 numen **0.1.3**(NumenPlugins 类 0.1.2 没有),不可降级混搭。
